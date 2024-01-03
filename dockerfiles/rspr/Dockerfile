@@ -18,7 +18,7 @@ RUN curl -L \
 ENV PATH=/rspr-master:$PATH
 
 # Install Python script dependencies
-RUN pip install pandas ete3 seaborn>0.13.0
+RUN pip install pandas ete3 seaborn>0.13.0 PyQt5
 
 # Get ps
 RUN apt-get update && apt-get install -y procps && rm -rf /var/lib/apt/lists/*
