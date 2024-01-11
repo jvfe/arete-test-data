@@ -17,11 +17,13 @@ RUN curl -L \
 
 ENV PATH=/rspr-master:$PATH
 
-# Install PyQt5 dependencies
-RUN apt-get update && apt-get install -y libgl1 libglib2.0-0 libsm6 libxrender1 libxext6 libxcb-xinerama0
-
 # Install Python script dependencies
-RUN pip install pandas ete3 seaborn>0.13.0 PyQt5
+RUN pip install pandas ete3 seaborn>0.13.0
+
+# Install BioPython and dependencies
+RUN apt-get update &&\
+    apt-get install -y graphviz graphviz-dev
+RUN pip install biopython networkx pygraphviz pydot
 
 # Get ps
 RUN apt-get update && apt-get install -y procps && rm -rf /var/lib/apt/lists/*
